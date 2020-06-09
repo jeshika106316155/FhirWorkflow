@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script language="JavaScript" type="text/javascript" src="\HTTPpostget\HTTPpostget.js"></script>
+    <script language="JavaScript" type="text/javascript" src="jsonpatient.js"></script>
+</head>
+
+<body>
+    <form id="patient" name="patient" style="text-align: left">
+        Name:<input type="text" name="PnameFamily" id="PnameFamily" value="" />
+        (Family)<input type="text" name="PnameGiven" id="PnameGiven" value="" />(Given)<br>
+        Gender:
+        <input type="radio" name="Pgender" id="PgenderMale" value="Male" />Male
+        <input type="radio" name="Pgender" id="PgenderFemale" value="Female" />Female
+        <br>
+        <input type="button" value="確定" id="patient" onclick="check(this)" />
+    </form>
+</body>
+
+</html>
