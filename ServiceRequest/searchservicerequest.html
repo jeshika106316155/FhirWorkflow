@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script language="JavaScript" type="text/javascript" src="/HTTPpostget/HTTPpostget.js"></script>
+    <script language="JavaScript" type="text/javascript" src="jsonservicerequest.js"></script>
+    <script language="JavaScript" type="text/javascript" src="SSRfunction.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/FHIR button/function.js"></script>
+</head>
+
+<body>
+    <form id="encounter" name="encounter" style="text-align: left">
+        Category:<input type="text" name="SSRcategory" id="SSRcategory" value="" />
+        Date: <input id="SSRDate" type="date" />​
+        <input type="button" value="確定" id="searchservicerequest" onclick="a()" />
+        <table id="myTable" style="color:black;">
+            <tr style="color:black;font-weight:bold;">
+                <th>No.</th>
+                <th>Service Request Id</th>
+                <th>Patient Id</th>
+                <th>Encounter</th>
+                <th>Date Time</th>
+            </tr>
+        </table><br>
+    </form>
+    <script>
+        function a() {
+            getJSON('ServiceRequest');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 var fhir = {
     "url": " http://203.64.84.213:8080/hapi-fhir-jpaserver/fhir/"//"http://hapi.fhir.org/baseR4/"
 }
+var PatID = "";
 function postData(jsonString, type, formID) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", fhir.url + type, true);
@@ -8,8 +9,15 @@ function postData(jsonString, type, formID) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4) // && this.status == 201) 
         {
-            //var ret = JSON.parse(this.responseText);
+            var ret = JSON.parse(this.responseText);
             alert(this.responseText);
+            if (formID == "patient") {
+                //Session["PatientID"] = ret.id;
+
+                //document.cookie = "PatientID=" + ret.id + ";";
+                PatID = ret.id;
+            }
+            else { window.open('', '_self').close(); }
         }
     };
     var data = JSON.stringify(jsonString);
@@ -23,7 +31,9 @@ function check(p) {
             Patient.name[0].given = document.getElementById("PnameGiven").value;
             if (document.getElementById("PgenderMale").checked == true) { Patient.gender = "male"; }
             else { Patient.gender = "female"; }
+            document.getElementById("Pencounter").disabled = false;
             postData(Patient, "Patient", p.id);
+
         }
         else { alert(p.id + "未勾選完畢"); }
     }
@@ -50,8 +60,9 @@ function check(p) {
         var dateTime = date + ' ' + time;
         if ((document.getElementById("SRpatientId").value != "") && (document.getElementById("SRencounterId").value != "") && (document.getElementById("SRcategory").value != "")) {
             ServiceRequest.subject.reference = "Patient/" + document.getElementById("SRpatientId").value;
+            ServiceRequest.encounter.reference = "Encounter/" + document.getElementById("SRencounterId").value;
             ServiceRequest.occurrenceDateTime = new Date(dateTime);
-            ServiceRequest.category = document.getElementById("SRcategory").value;
+            ServiceRequest.category[0].text = document.getElementById("SRcategory").value;
             postData(ServiceRequest, "ServiceRequest", p.id);
         }
         else { alert(p.id + "未勾選完畢"); }

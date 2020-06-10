@@ -1,4 +1,4 @@
-var Patient = {
+var ServiceRequest = {
     "resourceType": "ServiceRequest",
     "identifier": "",
     "encounter": {
@@ -12,5 +12,5 @@ var Patient = {
     }],
     "occurrenceDateTime": "<dateTime>"
 }
-
+var SServiceRequest;
 //https://www.hl7.org/fhir/patient.html

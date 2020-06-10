@@ -12,6 +12,18 @@
         Period Start("October 13, 2014 11:13:00"):<input type="text" name="EPstart" id="EPstart" value="" /><br>
         <input type="button" value="確定" id="encounter" onclick="check(this)" />
     </form>
+    <script>
+        alert(document.cookie);
+        //alert(Session["PatientID"]);
+        patID();
+        function patID() {
+            if (document.cookie != null && document.cookie != "") {
+                var ca = document.cookie.split(';');
+                var id = ca[0].split('=');
+                document.getElementById("EpatientId").value = id[1];
+            }
+        }
+    </script>
 </body>
 
 </html>
